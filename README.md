@@ -13,8 +13,8 @@ This solution demonstrate usage of **Service Broker** to implement sync requests
 1. Build & Deploy [Database][1] project using `F5`.
 2. Build [Worker][2] project.
 
-[1]: .\Database
-[2]: .\Worker 
+[1]: ./Database
+[2]: ./Worker 
 
 ## Execute
 
@@ -56,7 +56,7 @@ GO
 
 `"Timeout occured on waitig for handle '09D74FA4-F049-E311-A53A-C9D92FED11A4'"`
 
-[3]: .\Database\GetDynamicData.sql
+[3]: ./Database/GetDynamicData.sql
 
 ## Deploy
 
