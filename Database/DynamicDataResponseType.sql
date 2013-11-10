@@ -1,0 +1,2 @@
+﻿CREATE MESSAGE TYPE [DynamicDataResponseType]
+	VALIDATION = WELL_FORMED_XML;

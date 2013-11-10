@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Sql.Service.Broker</id>
+    <version>1.0.0</version>
+    <title>Sql.Service.Broker</title>
+    <authors>leonidm</authors>
+    <owners>Spiral Solutions Ltd.</owners>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package implements .Net side of Server Broker conversation implementation. Use this package to receive messages from queue, plug in bussines logic to handle received message and return response.</description>
+    <summary>.Net implementation of Service Broker listener</summary>
+    <releaseNotes />
+    <copyright>Copyright Spiral Solutions Ltd. 2013</copyright>
+    <language>en-US</language>
+    <tags>Sql ServiceBroker Queue</tags>
+  </metadata>
+</package>
