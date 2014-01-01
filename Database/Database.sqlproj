@@ -24,6 +24,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
+    <IsBrokerPriorityHonored>True</IsBrokerPriorityHonored>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -68,5 +69,8 @@
     <Build Include="DynamicDataResponseQueue.sql" />
     <Build Include="DynamicDataRequestService.sql" />
     <Build Include="DynamicDataResponseService.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database_Localdb.publish.xml" />
   </ItemGroup>
 </Project>

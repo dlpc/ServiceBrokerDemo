@@ -5,6 +5,10 @@ AS
 		DECLARE @timestamp DATETIME;
 		DECLARE @message NVARCHAR(MAX);
 		DECLARE @response XML;
+
+		IF OBJECT_ID('tempdb..#DynamicDataResult') IS NULL
+			CREATE TABLE #DynamicDataResult (Result NVARCHAR(MAX));
+
 		BEGIN DIALOG CONVERSATION @conversation_handle
 		FROM SERVICE [DynamicDataResponseService]
 		TO SERVICE 'DynamicDataRequestService'
@@ -16,9 +20,11 @@ AS
 		SET @message = '<requests><request><message><requestTime>'
 						+CONVERT(VARCHAR(19), @timestamp, 127)
 						+'</requestTime></message></request></requests>';
+
+		--PRINT '@@TRANCOUNT Before SEND: ' + CAST(@@TRANCOUNT AS VARCHAR(10));
+
 		SEND ON CONVERSATION @conversation_handle MESSAGE TYPE [DynamicDataRequestType] (@message);
 
-		BEGIN TRANSACTION ;
 		WAITFOR(RECEIVE TOP(1)
 			@response = CAST(message_body AS XML)
 		FROM
@@ -28,15 +34,16 @@ AS
 			), TIMEOUT 10000;
 		IF(@@ROWCOUNT=0) 
 		BEGIN
-			ROLLBACK TRANSACTION;
 			END CONVERSATION @conversation_handle WITH CLEANUP;
-			SELECT 'Timeout occured on waitig for handle ''' + CAST(@conversation_handle AS VARCHAR(40)) + '''' AS 'Result';
+			INSERT INTO #DynamicDataResult
+				SELECT 'Timeout occured on waitig for handle ''' + CAST(@conversation_handle AS VARCHAR(40)) + '''' AS 'Result';
 		END
 		ELSE
 		BEGIN
-			SELECT CAST(@response AS NVARCHAR(MAX)) AS 'Result';
+			INSERT INTO #DynamicDataResult
+				SELECT CAST(@response AS NVARCHAR(MAX)) AS 'Result';
 			END CONVERSATION @conversation_handle;		
-			COMMIT TRANSACTION;
 		END
+		SELECT * FROM #DynamicDataResult
 	END
 RETURN 0

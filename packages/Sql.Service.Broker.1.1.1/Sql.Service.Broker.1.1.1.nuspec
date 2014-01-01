@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Sql.Service.Broker</id>
-    <version>1.0.0</version>
+    <version>1.1.1</version>
     <title>Sql.Service.Broker</title>
     <authors>leonidm</authors>
     <owners>Spiral Solutions Ltd.</owners>
@@ -10,7 +10,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package implements .Net side of Server Broker conversation implementation. Use this package to receive messages from queue, plug in bussines logic to handle received message and return response.</description>
     <summary>.Net implementation of Service Broker listener</summary>
-    <releaseNotes />
+    <releaseNotes>v.1.1.0: Update broker to support poison message handling. IPoisonMessageManager implementation added.
+      v.1.0.1: Update string handling, better support naming conventions of Service broker
+      v.1.0.0: Initial release</releaseNotes>
     <copyright>Copyright Spiral Solutions Ltd. 2013</copyright>
     <language>en-US</language>
     <tags>Sql ServiceBroker Queue</tags>
